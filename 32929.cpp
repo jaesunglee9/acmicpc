@@ -10,21 +10,18 @@ main()
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int n;
-  cin >> n;
+  int x;
+  cin >> x;
 
-  int i = 0;
-  int l = 0;
-  while (i < n) {
-    string sl = to_string(l);
-    if (sl.find("666") != string::npos) {
-      i += 1;
-    }
-
-    ++l;
+  int rem = x % 3;
+  if (rem == 0) {
+    cout << 'S';
+  } else if (rem == 1) {
+    cout << 'U';
+  } else if (rem == 2) {
+    cout << 'O';
   }
-  cout << l - 1;
-
+  
   return 0;
 }
 
