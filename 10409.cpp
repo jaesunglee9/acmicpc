@@ -4,13 +4,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int INF = 1e9 + 7;
-
-
 int main()
 {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
+
+	int n, t;
+	cin >> n >> t;
+
+	int count = 0;
+	int total = 0;
+        for (int i = 0; i < n; ++i) {
+		int input;
+		cin >> input;
+		total += input;
+		if (total > t) {
+			break;
+		}
+		count += 1;
+	}
+	cout << count;
 
 	return 0;
 }
