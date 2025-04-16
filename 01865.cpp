@@ -6,28 +6,56 @@ using namespace std;
 
 const int INF = 1e9 + 7;
 
-void f(vector<vector<int>>& g) {
-	int n = g.size() - 1;  // N_nodes
-	for (int k = 1; k <= n; k++) {
-		for (int i = 1; i <= n; i++) {
-			for (int j = 1; j <= n; j++) {
-				if (g[i][k] < INF && g[k][j] < INF) {
-					g[i][j] = min(g[i][j], g[i][k] + g[k][j]);
-				}
+struct Edge {
+	int u, v, w;
+	Edge(int u, int v, int w) : u(u), v(v), w(w) {} // constructor
+};
+
+bool relax(Edge& e, vector<int>& d) {
+	if (d[e.u] != INF && d[e.v] > d[e.u] + e.w) {
+		d[e.v] = d[e.u] + e.w;
+		return true;
+	}
+
+	return false;
+}
+
+void bf(vector<vector<int>>& g) {
+	int n = g.size() - 1;
+	
+	vector<Edge> edges;
+	for (int i = 0; i <= n; i++) {
+		edges.emplace_back(0, i, 0);
+	}
+	
+	for (int j = 1;j <= n; j++) {
+		for (int k = 1; k <= n; k++) {
+			if (g[j][k] != INF) {
+				edges.emplace_back(j, k, g[j][k]);
 			}
 		}
 	}
+	
+	vector<int> d(n+1, INF);
+	d[0] = 0;
+	
+	for (int j = 0; j < n; j++) {
+		for (auto& e : edges) {
+			relax(e, d);
+		}
+	}
 
-	for (int i = 1; i <= n; i++) {
-		if (g[i][i] < 0) {
-			cout << "YES" << '\n';
+	for (auto& e : edges) {
+		if (relax(e, d)) {
+			cout << "YES\n";
 			return;
 		}
 	}
-	cout << "NO" << '\n';
+
+	cout << "NO\n";
 	return;
-}
-	
+}	
+
 
 int main()
 {
@@ -40,10 +68,7 @@ int main()
 		int n, m, w, s, e, t;
 		cin >> n >> m >> w;
 		vector<vector<int>> g(n+1, vector<int>(n+1, INF));
-		for (int i = 0; i <= n; i++) {
-			g[i][i] = 0;
-			g[0][i] = 0;
-		}
+
 		for (int j = 0; j < m; j++) {
 			cin >> s >> e >> t;
 			g[s][e] = min(g[s][e], t);
@@ -55,7 +80,7 @@ int main()
 		        g[s][e] = min(-t, g[s][e]);
 		}
 
-		f(g);
+		bf(g);		
 	}
 			
 
