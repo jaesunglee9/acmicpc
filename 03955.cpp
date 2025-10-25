@@ -1,10 +1,7 @@
-v#include <iostream>
+#include <iostream>
 
 using namespace std;
 typedef long long ll;
-
-
-
 
 
 int
@@ -40,9 +37,6 @@ main(void) {
 		}
 		else {
 			int x, y;
-			
-		
-
 			ll g = gcd(k, c, x, y);
 			y = (y % k + k) % k;
 
@@ -63,7 +57,6 @@ main(void) {
 		cout << '\n';
 	}
 
-	
 	return 0;
 }
 
