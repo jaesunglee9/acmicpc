@@ -153,7 +153,11 @@ sol0(const vector<string>& a)
 
 
 void
-sol1(const vector<string>& a) {}
+sol1(const vector<string>& a)
+{
+	// see inho0233's code
+	// https://www.acmicpc.net/source/100871434
+}
 
 
 
