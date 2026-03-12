@@ -10,6 +10,7 @@ using namespace std;
 const int INF = 1e9 + 7;
 using ll = long long;
 
+// sol1 stuff
 enum OpCode {
     OP_NUM, OP_POP, OP_INV, OP_DUP, OP_SWP, OP_ADD, OP_SUB, OP_MUL, OP_DIV, OP_MOD
 };
@@ -33,6 +34,10 @@ OpCode getOpCode(const string& s) {
     if (s == "MOD") return OP_MOD;
     return OP_NUM; // Should not happen based on problem description
 }
+
+// end sol1 stuff
+
+
 
 void
 sol1(vector<CMD>& pgm, vector<int>& s)

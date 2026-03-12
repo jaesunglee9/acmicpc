@@ -48,14 +48,7 @@ sol0(void)
 	}
 
 	cout << d[dst] << '\n';
-}
-
-		
-
-	
-	
-
-	
+}	
 
 int
 main(void)
