@@ -1,2 +1,11 @@
+<<<<<<< HEAD
 **/out
 
+=======
+*
+!*/
+!.gitignore
+!*.cpp
+!*.cc
+!*.java
+>>>>>>> origin/main
